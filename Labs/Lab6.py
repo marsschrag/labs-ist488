@@ -3,7 +3,13 @@ from langchain.chat_models import init_chat_model
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-llm = init_chat_model("claude-haiku-4-5-20251001", model_provider="anthropic")
+#llm = init_chat_model("claude-haiku-4-5-20251001", model_provider="anthropic")
+
+import os
+
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = openai_api_key
+llm = init_chat_model("gpt-4o-2024-08-06", model_provider="openai")
 
 st.title('Lab 6: Movie Recommendation Chatbot')
 
