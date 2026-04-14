@@ -5,6 +5,9 @@ from openai import OpenAI
 
 st.title("Lab 9: Long-Term Memory Chatbot")
 
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+client = OpenAI(api_key=openai_api_key)
+
 #part b
 def memories_load():
     if os.path.exists('memories.json'):
@@ -28,8 +31,6 @@ else:
 st.sidebar.button("Clear Memories", on_click=lambda: memories_save({}))
 
 #part c: build the chatbot
-openai_api_key = st.secrets["OPENAI_API_KEY"]
-client = OpenAI(api_key=openai_api_key)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
